@@ -1,0 +1,41 @@
+﻿<Window x:Class="SystemDiagnosticsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemDiagnosticsApp"
+        mc:Ignorable="d"
+        Title="System Diagnostics App" Height="500" Width="600">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Title -->
+        <TextBlock Grid.Row="0" Text="System Performance Monitor" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        
+        <!-- Performance Display -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Label x:Name="CpuLabel" Content="CPU: ---%" FontSize="16" Margin="0,0,30,0" Foreground="Blue"/>
+            <Label x:Name="RamLabel" Content="RAM: --- MB" FontSize="16" Foreground="Green"/>
+        </StackPanel>
+        
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button x:Name="StartMonitoringBtn" Content="Start Monitoring" Width="120" Height="35" Margin="5" Click="OnStartMonitoringClick"/>
+            <Button x:Name="StartETWBtn" Content="Start ETW Trace" Width="120" Height="35" Margin="5" Click="OnStartETWClick"/>
+            <Button x:Name="StopETWBtn" Content="Stop ETW Trace" Width="120" Height="35" Margin="5" Click="OnStopETWClick" IsEnabled="False"/>
+        </StackPanel>
+        
+        <Button Grid.Row="3" x:Name="DiagnoseBtn" Content="Generate Diagnostic Report" Width="200" Height="40" Margin="0,0,0,20" Click="OnDiagnoseClick" HorizontalAlignment="Center"/>
+        
+        <!-- Report Display -->
+        <ScrollViewer Grid.Row="4">
+            <TextBox x:Name="ReportTextBox" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" FontSize="12" Background="#F5F5F5"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
